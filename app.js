@@ -1,5 +1,8 @@
 let gridSize = 24;
 let penColor = "#000";
+//used to set the eraser back to pen color
+let selectedColor = "#000";
+let bgColor = "#fff";
 const canvas = document.querySelector(".canvas");
 let defaultBg = "#fff";
 
@@ -36,8 +39,9 @@ document.addEventListener("mousedown", (e) => {
 });
 
 document.addEventListener("mouseover", (e) => {
-  if (isDrawing) {
+  if (isDrawing && e.target.classList.contains("box")) {
     e.target.style.backgroundColor = penColor;
+    console.log(e.target);
   }
 });
 
@@ -66,6 +70,7 @@ document.querySelector("#clear-grid").addEventListener("click", () => {
   document
     .querySelectorAll(".box")
     .forEach((e) => (e.style.backgroundColor = defaultBg));
+  canvas.style.backgroundColor = "#fff";
 });
 
 //get grid size
@@ -76,4 +81,40 @@ rangeSlider.addEventListener("change", () => {
     .querySelectorAll(".range-value")
     .forEach((e) => (e.innerHTML = gridValue.toString()));
   createGrid(gridValue);
+});
+
+//manipulating pen color and canvas background
+const penInputColor = document.querySelector("#pen-color-picker");
+const bgInputColor = document.querySelector("#bg-color-picker");
+
+document.querySelector("#pen__btn").addEventListener("click", () => {
+  penInputColor.style.display = "block";
+  penInputColor.addEventListener("change", () => {
+    colorValue = penInputColor.value;
+    penColor = colorValue.toString();
+    selectedColor = colorValue.toString();
+    penInputColor.style.display = "none";
+  });
+});
+
+document.querySelector("#bg__btn").addEventListener("change", () => {
+  bgInputColor.style.display = "block";
+  bgInputColor.addEventListener("change", () => {
+    colorValue = bgInputColor.value;
+    bgColor = colorValue.toString();
+    canvas.style.backgroundColor = bgColor;
+    bgInputColor.style.display = "none";
+  });
+});
+
+//eraser button set pen color = background color
+const eraserBtn = document.querySelector("#eraser__btn");
+eraserBtn.addEventListener("click", () => {
+  if (!eraserBtn.classList.contains("btn-selected")) {
+    penColor = bgColor;
+    eraserBtn.classList.toggle("btn-selected");
+  } else {
+    penColor = selectedColor;
+    eraserBtn.classList.toggle("btn-selected");
+  }
 });
