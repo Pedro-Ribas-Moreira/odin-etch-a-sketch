@@ -34,6 +34,7 @@ createGrid(gridSize);
 isDrawing = false;
 document.addEventListener("mousedown", (e) => {
   if (e.target.classList.contains("box")) {
+    canvas.style.cursor = "crosshair";
     isDrawing = true;
   }
 });
@@ -48,6 +49,7 @@ document.addEventListener("mouseover", (e) => {
 document.addEventListener("mouseup", (e) => {
   if (isDrawing) {
     isDrawing = false;
+    canvas.style.cursor = "default";
   }
 });
 //set grid  borders on/off

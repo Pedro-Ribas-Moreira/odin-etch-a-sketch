@@ -45,7 +45,7 @@ main {
   height: 800px;
   background-color: #fff;
   border: solid 1.4px #41403e;
-  cursor: crosshair;
+  cursor: default;
   box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
   border-bottom-left-radius: 15px 100px;
   border-bottom-right-radius: 205px 15px;
