@@ -1,11 +1,19 @@
 let gridSize = 24;
-let penColor = "#000";
+let penColor = "#000000";
 //used to set the eraser back to pen color
-let selectedColor = "#000";
-let bgColor = "#fff";
+let selectedColor = "#000000";
+let bgColor = "#ffffff";
 const canvas = document.querySelector(".canvas");
-let defaultBg = "#fff";
-
+let defaultBg = "#ffffff";
+const rainbowColors = [
+  "#ff0000",
+  "#ffa500",
+  "#ffff00",
+  "#008000",
+  "#0000ff",
+  "#4b0082",
+  "#ee82ee",
+];
 //create grid
 const createGrid = (gridSize) => {
   canvas.innerHTML = "";
@@ -41,8 +49,14 @@ document.addEventListener("mousedown", (e) => {
 
 document.addEventListener("mouseover", (e) => {
   if (isDrawing && e.target.classList.contains("box")) {
-    e.target.style.backgroundColor = penColor;
-    console.log(e.target);
+    if (rainbowBtn.classList.contains("btn-selected")) {
+      e.target.style.backgroundColor = rainbowColors[0];
+      let usedColor = rainbowColors.shift();
+      rainbowColors.push(usedColor);
+      console.log(rainbowColors);
+    } else {
+      e.target.style.backgroundColor = penColor;
+    }
   }
 });
 
@@ -120,3 +134,33 @@ eraserBtn.addEventListener("click", () => {
     eraserBtn.classList.toggle("btn-selected");
   }
 });
+
+//set up rainbow feature
+rainbowBtn = document.querySelector("#rainbow__btn");
+rainbowBtn.addEventListener("click", () => {
+  if (!rainbowBtn.classList.contains("btn-selected")) {
+    rainbowBtn.classList.toggle("btn-selected");
+  } else {
+    rainbowBtn.classList.toggle("btn-selected");
+  }
+});
+
+//shading
+const newShade = (hexColor, magnitude) => {
+  hexColor = hexColor.replace(`#`, ``);
+  if (hexColor.length === 6) {
+    const decimalColor = parseInt(hexColor, 16);
+    let r = (decimalColor >> 16) + magnitude;
+    r > 255 && (r = 255);
+    r < 0 && (r = 0);
+    let g = (decimalColor & 0x0000ff) + magnitude;
+    g > 255 && (g = 255);
+    g < 0 && (g = 0);
+    let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
+    b > 255 && (b = 255);
+    b < 0 && (b = 0);
+    return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
+  } else {
+    return hexColor;
+  }
+};
