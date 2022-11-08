@@ -10,15 +10,39 @@
   <body>
     <h1>Project: Etch-A-Sketch</h1>
     <main>
-      <div class="sidebard">
-        <div class="paint__color"></div>
-        <div class="bg__color"></div>
-        <div class="color__picker"></div>
-        <button>Eraser</button>
-        <button>Rainbow</button>
-        <button>Shading</button>
-        <button>Lighten</button>
+      <div class="sidebar">
+        <div class="paint__color">
+            <button id="pen__btn">Pen color</button>  
+            <input type="color" name="color-picker" id="color-picker" >     
+            <button id="bg__btn">Background</button>
+
+        </div>
+        <div class="btns">
+
+          <button id="eraser__btn">Eraser</button>
+          <button id="rainbow__btn">Rainbow</button>
+          <button id="shading__btn">Shading</button>
+          <button id="lighten__btn">Lighten</button>
+       
+        </div>   
+        <div class="slider-box">
+       
+            <input
+            type="range"
+            value="24"
+            min="1"
+            max="60"
+            id="range-slider"
+            onmousemove="rangeSliderValue(this.value)"
+            onChange="rangeSlider(this.value)"
+          />
+          <p class="grid-size">Grid size: <span id="range-value">24</span> x <span id="range-value">24</span></p>
+
+          <button id="grid-btn" class="btn-on">Toggle Grid Lines</button>
+          <button id="clear-grid">Clear</button>
+        </div>
       </div>
+    </div>
       <div class="canvas"></div>
     </main>
     <script src="app.js"></script>
