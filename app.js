@@ -5,10 +5,10 @@ let defaultBg = "#fff";
 
 //create grid
 const createGrid = (gridSize) => {
+  canvas.innerHTML = "";
   let container = document.createElement("div");
   container.id = "mainGrid";
   container.className = "container";
-
   for (let i = 0; i < gridSize; i++) {
     let row = document.createElement("div");
     row.className = "row";
@@ -27,7 +27,7 @@ const createGrid = (gridSize) => {
   canvas.appendChild(container);
 };
 createGrid(gridSize);
-
+// drawing
 isDrawing = false;
 document.addEventListener("mousedown", (e) => {
   if (e.target.classList.contains("box")) {
@@ -37,9 +37,7 @@ document.addEventListener("mousedown", (e) => {
 
 document.addEventListener("mouseover", (e) => {
   if (isDrawing) {
-    let boxId = e.target.id;
     e.target.style.backgroundColor = penColor;
-    // document.querySelector(`#${boxId}`).style.backgroundColor = penColor;
   }
 });
 
@@ -48,7 +46,7 @@ document.addEventListener("mouseup", (e) => {
     isDrawing = false;
   }
 });
-
+//set grid  borders on/off
 isGridOn = true;
 document.querySelector("#grid-btn").addEventListener("click", () => {
   console.log("click");
@@ -63,8 +61,19 @@ document.querySelector("#grid-btn").addEventListener("click", () => {
   }
 });
 
+//clear the canvas
 document.querySelector("#clear-grid").addEventListener("click", () => {
   document
     .querySelectorAll(".box")
     .forEach((e) => (e.style.backgroundColor = defaultBg));
+});
+
+//get grid size
+const rangeSlider = document.querySelector("#range-slider");
+rangeSlider.addEventListener("change", () => {
+  const gridValue = rangeSlider.value;
+  document
+    .querySelectorAll(".range-value")
+    .forEach((e) => (e.innerHTML = gridValue.toString()));
+  createGrid(gridValue);
 });
