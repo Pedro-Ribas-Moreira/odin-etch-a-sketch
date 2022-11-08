@@ -97,7 +97,6 @@ button {
 
 button:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
-
   transform: translate3d(0, 2px, 0);
 }
 
@@ -108,9 +107,14 @@ button:focus {
 .btn-selected {
   background-color: rgb(207, 205, 205);
   color: #74726f;
-
+  box-shadow: 0 0 0 0;
   transform: translate3d(0, 4px, 0);
 }
+/* .btn-selected:hover {
+  box-shadow: 0 0 0 0;
+
+  transform: translate3d(0, 0, 0);
+} */
 
 .slider-box {
 }
