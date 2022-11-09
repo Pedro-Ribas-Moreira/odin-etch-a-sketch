@@ -113,7 +113,7 @@ document.querySelector("#pen__btn").addEventListener("click", () => {
   });
 });
 
-document.querySelector("#bg__btn").addEventListener("change", () => {
+document.querySelector("#bg__btn").addEventListener("click", () => {
   bgInputColor.style.display = "block";
   bgInputColor.addEventListener("change", () => {
     colorValue = bgInputColor.value;
