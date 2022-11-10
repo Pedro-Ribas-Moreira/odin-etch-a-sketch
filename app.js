@@ -53,7 +53,18 @@ document.addEventListener("mouseover", (e) => {
       e.target.style.backgroundColor = rainbowColors[0];
       let usedColor = rainbowColors.shift();
       rainbowColors.push(usedColor);
-      console.log(rainbowColors);
+    } else if (lightenBtn.classList.contains("btn-selected")) {
+      if (e.target.style.backgroundColor != null) {
+        let hexColor = rgb2hex(e.target.style.backgroundColor);
+        let newHexcolor = newShade(hexColor, 30);
+        e.target.style.backgroundColor = newHexcolor.toString();
+      }
+    } else if (shadingBtn.classList.contains("btn-selected")) {
+      if (e.target.style.backgroundColor != null) {
+        let hexColor = rgb2hex(e.target.style.backgroundColor);
+        let newHexcolor = newShade(hexColor, -30);
+        e.target.style.backgroundColor = newHexcolor.toString();
+      }
     } else {
       e.target.style.backgroundColor = penColor;
     }
@@ -138,14 +149,17 @@ eraserBtn.addEventListener("click", () => {
 //set up rainbow feature
 rainbowBtn = document.querySelector("#rainbow__btn");
 rainbowBtn.addEventListener("click", () => {
-  if (!rainbowBtn.classList.contains("btn-selected")) {
-    rainbowBtn.classList.toggle("btn-selected");
-  } else {
-    rainbowBtn.classList.toggle("btn-selected");
-  }
+  rainbowBtn.classList.toggle("btn-selected");
 });
 
 //shading
+const rgb2hex = (rgb) =>
+  `#${rgb
+    .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+    .slice(1)
+    .map((n) => parseInt(n, 10).toString(16).padStart(2, "0"))
+    .join("")}`;
+
 const newShade = (hexColor, magnitude) => {
   hexColor = hexColor.replace(`#`, ``);
   if (hexColor.length === 6) {
@@ -164,3 +178,16 @@ const newShade = (hexColor, magnitude) => {
     return hexColor;
   }
 };
+const lightenBtn = document.querySelector("#lighten__btn");
+lightenBtn.addEventListener("click", () => {
+  lightenBtn.classList.toggle("btn-selected");
+});
+const shadingBtn = document.querySelector("#shading__btn");
+shadingBtn.addEventListener("click", () => {
+  shadingBtn.classList.toggle("btn-selected");
+});
+// const disableBtns = () => {
+//   document
+//     .querySelectorAll(".btn-selected")
+//     .forEach((e) => e.classList.remove("btn-select"));
+// };
