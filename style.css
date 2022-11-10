@@ -104,18 +104,6 @@ button:focus {
   box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
 }
 
-.btn-selected {
-  /* background-color: rgb(207, 205, 205);
-  color: #74726f;
-  box-shadow: 0 0 0 0;
-  transform: translate3d(0, 4px, 0); */
-}
-/* .btn-selected:hover {
-  box-shadow: 0 0 0 0;
-
-  transform: translate3d(0, 0, 0);
-} */
-
 .disabled {
   background-color: rgb(207, 205, 205);
   color: #74726f;
@@ -124,8 +112,6 @@ button:focus {
   pointer-events: none;
 }
 
-.slider-box {
-}
 .grid-size {
   text-align: center;
   margin-top: 8px;
