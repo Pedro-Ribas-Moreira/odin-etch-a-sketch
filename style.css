@@ -105,16 +105,24 @@ button:focus {
 }
 
 .btn-selected {
-  background-color: rgb(207, 205, 205);
+  /* background-color: rgb(207, 205, 205);
   color: #74726f;
   box-shadow: 0 0 0 0;
-  transform: translate3d(0, 4px, 0);
+  transform: translate3d(0, 4px, 0); */
 }
 /* .btn-selected:hover {
   box-shadow: 0 0 0 0;
 
   transform: translate3d(0, 0, 0);
 } */
+
+.disabled {
+  background-color: rgb(207, 205, 205);
+  color: #74726f;
+  box-shadow: 0 0 0 0;
+  transform: translate3d(0, 4px, 0);
+  pointer-events: none;
+}
 
 .slider-box {
 }

@@ -137,6 +137,9 @@ document.querySelector("#bg__btn").addEventListener("click", () => {
 //eraser button set pen color = background color
 const eraserBtn = document.querySelector("#eraser__btn");
 eraserBtn.addEventListener("click", () => {
+  disableBtns();
+  eraserBtn.classList.remove("disabled");
+  // lightenBtn.classList.toggle("btn-selected");
   if (!eraserBtn.classList.contains("btn-selected")) {
     penColor = bgColor;
     eraserBtn.classList.toggle("btn-selected");
@@ -149,6 +152,8 @@ eraserBtn.addEventListener("click", () => {
 //set up rainbow feature
 rainbowBtn = document.querySelector("#rainbow__btn");
 rainbowBtn.addEventListener("click", () => {
+  disableBtns();
+  rainbowBtn.classList.remove("disabled");
   rainbowBtn.classList.toggle("btn-selected");
 });
 
@@ -180,14 +185,23 @@ const newShade = (hexColor, magnitude) => {
 };
 const lightenBtn = document.querySelector("#lighten__btn");
 lightenBtn.addEventListener("click", () => {
+  disableBtns();
+  lightenBtn.classList.remove("disabled");
   lightenBtn.classList.toggle("btn-selected");
 });
 const shadingBtn = document.querySelector("#shading__btn");
 shadingBtn.addEventListener("click", () => {
+  disableBtns();
+  shadingBtn.classList.remove("disabled");
   shadingBtn.classList.toggle("btn-selected");
 });
-// const disableBtns = () => {
+const disableBtns = () => {
+  document
+    .querySelectorAll("button")
+    .forEach((e) => e.classList.toggle("disabled"));
+};
+// const e = () => {
 //   document
-//     .querySelectorAll(".btn-selected")
-//     .forEach((e) => e.classList.remove("btn-select"));
+//     .querySelectorAll("button")
+//     .forEach((e) => e.classList.add("disabled"));
 // };
