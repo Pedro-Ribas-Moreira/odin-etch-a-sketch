@@ -81,7 +81,11 @@
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 <p>This project consists of an assessment for the Odin Project, to improve Javascript DOM manipulation skills and master CSS styling.
 <br>
-I used JS to create the main engine of the project with "addEventListener" + "click", "mouseover", "mousedown", and "change" combined with classList manipulation to change between styles, in order to delivery a better user experience.
+<br>
+
+In this project, Javascript was used to create the main function for the drawing with onmouseover and onmouse down event listener.
+Also, others event listeners such as onchange and onclick was used combined with CSS to delivery a better user experience.
+
 </p>
 <!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Pedro-Ribas-Moreira`, `odin-foundations-rock-paper-scissors`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `Eatch-A-Sketch`, `project_description` -->
 
